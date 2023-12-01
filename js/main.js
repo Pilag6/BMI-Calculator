@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const heightInput = document.getElementById("height");
     const bmiOutput = document.getElementById("bmi");
     const calculateBtn = document.getElementById("calculate-btn");
-    const resultDiv = document.getElementById("result");
+    const resultDiv = document.getElementById("resultText");
 
     // Add event listeners
     ageMinusBtn.addEventListener("click", decreaseAge);
@@ -43,18 +43,26 @@ document.addEventListener("DOMContentLoaded", function () {
             let result = "";
             if (isNaN(bmi)) {
                 result = "Please enter valid values for height and weight.";
-            } else if (bmi < 18.5) {result = `Your BMI: ${bmi.toFixed(2)}<br>`;
-                result += `Category: "Underweight"<br>`;
-                result += `Normal BMI Range: 18.5 - 24.9`;
+            } else if (bmi < 18.5) {
+                result += `"Underweight"<br>`;
+                resultDiv.style.color = "red";
+                resultDiv.style.backgroundColor = "yellow";
+                resultDiv.style.padding = "10px";
             } else if (bmi < 25) {
-                result += `Category: "Normal Weight"<br>`;
-                result += `Normal BMI Range: 18.5 - 24.9`;
+                result += `"Normal Weight"<br>`;
+                resultDiv.style.color = "green";
+                resultDiv.style.backgroundColor = "white";
+                resultDiv.style.padding = "10px";
             } else if (bmi < 30) {
-                result += `Category: "Overweight"<br>`;
-                result += `Normal BMI Range: 18.5 - 24.9`;
+                result += `"Overweight"<br>`;
+                resultDiv.style.color = "red";
+                resultDiv.style.backgroundColor = "yellow";
+                resultDiv.style.padding
             } else {
-                result += `Category: "Obese"<br>`;
-                result += `Normal BMI Range: 18.5 - 24.9`;
+                result += `"Obese"<br>`;
+                resultDiv.style.color = "red";
+                resultDiv.style.backgroundColor = "yellow";
+                resultDiv.style.padding
             }
 
             resultDiv.innerHTML = result;
