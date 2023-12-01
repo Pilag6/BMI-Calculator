@@ -39,33 +39,32 @@ document.addEventListener("DOMContentLoaded", function () {
             const bmi = weight / (height * height);
             bmiOutput.textContent = bmi.toFixed(2);
 
-            // Display result
             let result = "";
+            let color, backgroundColor, padding;
+
             if (isNaN(bmi)) {
                 result = "Please enter valid values for height and weight.";
             } else if (bmi < 18.5) {
-                result += `"Underweight"<br>`;
-                resultDiv.style.color = "red";
-                resultDiv.style.backgroundColor = "yellow";
-                resultDiv.style.padding = "10px";
+                result = "Underweight";
+                color = "red";
+                backgroundColor = "yellow";
+                padding = "10px";
             } else if (bmi < 25) {
-                result += `"Normal Weight"<br>`;
-                resultDiv.style.color = "green";
-                resultDiv.style.backgroundColor = "white";
-                resultDiv.style.padding = "10px";
-            } else if (bmi < 30) {
-                result += `"Overweight"<br>`;
-                resultDiv.style.color = "red";
-                resultDiv.style.backgroundColor = "yellow";
-                resultDiv.style.padding
+                result = "Normal Weight";
+                color = "green";
+                backgroundColor = "white";
+                padding = "10px";
             } else {
-                result += `"Obese"<br>`;
-                resultDiv.style.color = "red";
-                resultDiv.style.backgroundColor = "yellow";
-                resultDiv.style.padding
+                result = bmi < 30 ? "Overweight" : "Obese";
+                color = "red";
+                backgroundColor = "yellow";
+                padding = "10px";
             }
 
-            resultDiv.innerHTML = result;
+            resultDiv.innerHTML = `${result}`;
+            resultDiv.style.color = color;
+            resultDiv.style.backgroundColor = backgroundColor;
+            resultDiv.style.padding = padding;
         }
     }
 });
